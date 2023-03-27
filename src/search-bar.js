@@ -7,7 +7,7 @@ class SearchBar extends LitElement {
   };
 
   static styles = css`
-    .search-bar {
+    .container {
       background-color: #fff;
       border-radius: 5px;
       border: 1px solid #ccc;
@@ -17,15 +17,37 @@ class SearchBar extends LitElement {
       justify-content: center;
       padding: 10px;
       margin: 10px;
-      width: 80%;
+      width: 90%;
     }
-    input {
-      width: 95%;
+    .dialogue {
+      text-align: center;
+      margin: 10px;
+      width: 90%;
+    }
+    .search {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      margin: 20px 0px;
+    }
+    .search-bar {
       padding: 10px;
-      margin: 20px;
       border: 1px solid #ccc;
       border-radius: 5px;
-      display: inline-flex;
+      margin: 0px 10px;
+      width: 80%;
+    }
+    .search-button {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background-color: #667dff;
+      cursor: pointer;
+    }
+    .search-button:hover {
+      background-color: #485abf;
     }
   `;
 
@@ -38,11 +60,11 @@ class SearchBar extends LitElement {
 
   render() {
     return html`
-      <div class="search-bar">
+      <div class="container">
         <div class="dialogue">${this.dialogue}</div>
         <div class="search">
-          <input type="text" placeholder="Search" />
-          <button>Search</button>
+          <input type="text" placeholder="Search" class="search-bar" />
+          <button class="search-button">Search</button>
         </div>
       </div>
     `;

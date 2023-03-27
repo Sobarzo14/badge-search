@@ -6,33 +6,35 @@ class BadgeElement extends LitElement {
     creator: { type: String },
     category: { type: String },
     icon: { type: String },
+    color: { type: String },
   };
 
   static styles = css`
-    a {
+    .card {
       text-decoration: none;
-      background-color: #fff;
+      background-color: #000000;
       border: 1px solid #ccc;
       width: 100px;
     }
-    .contents {
+    .container {
       padding: 10px;
       text-align: center;
       font-size: 12px;
+      background-color: #8a8a8a;
     }
   `;
 
   constructor() {
     super();
-    this.name = 'My name';
-    this.creator = 'My creator';
+    this.name = 'APA Styles Citation: Introduction';
+    this.creator = 'Victoria Rash';
     this.category = 'My category';
   }
 
   render() {
     return html`
-      <a href="#">
-        <div class="contents">
+      <a href="#" class="card">
+        <div class="container">
           <span>${this.category}</span>
           <span>${this.name}</span>
           <div>${this.creator}</div>
