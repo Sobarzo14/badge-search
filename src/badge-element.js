@@ -12,15 +12,42 @@ class BadgeElement extends LitElement {
   static styles = css`
     .card {
       text-decoration: none;
-      background-color: #000000;
+      background-color: #8a8a8a;
       border: 1px solid #ccc;
-      width: 100px;
+      width: 480px;
     }
     .container {
-      padding: 10px;
+      width: 480px;
       text-align: center;
+      padding: 2 2 2 20px;
       font-size: 12px;
       background-color: #8a8a8a;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+    }
+    .badge-body {
+      width: 95%;
+      padding: 2 2 2 20px;
+      background-color: #fff;
+      border-radius: 5px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .name {
+      font-size: 16px;
+      font-weight: bold;
+      color: #fff;
+    }
+    .creator {
+      font-size: 12px;
+      color: #fff;
+    }
+    .category {
+      font-size: 12px;
+      color: #fff;
     }
   `;
 
@@ -35,9 +62,14 @@ class BadgeElement extends LitElement {
     return html`
       <a href="#" class="card">
         <div class="container">
-          <span>${this.category}</span>
-          <span>${this.name}</span>
-          <div>${this.creator}</div>
+          <div class="badge-body">
+            <div class="category">${this.category}</div>
+            <div class="info">
+              <span>${this.name}</span>
+              <i></i>
+            </div>
+            <div class="creator">${this.creator}</div>
+          </div>
         </div>
       </a>
     `;
