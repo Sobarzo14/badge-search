@@ -10,44 +10,61 @@ class BadgeElement extends LitElement {
   };
 
   static styles = css`
+    a:active {
+      text-decoration: none;
+      color: #000000;
+    }
+    a:hover {
+      text-decoration: none;
+      color: #000000;
+    }
+    a:visited {
+      text-decoration: none;
+      color: #000000;
+    }
     .card {
       text-decoration: none;
       background-color: #8a8a8a;
       border: 1px solid #ccc;
-      width: 480px;
+      color: #000000;
     }
     .container {
-      width: 480px;
-      text-align: center;
-      padding: 2 2 2 20px;
+      width: 280px;
+      padding: 2 2 2 20;
       font-size: 12px;
-      background-color: #8a8a8a;
+      background-color: #00d9ff;
       display: flex;
-      flex-direction: column;
-      align-items: flex-end;
+      flex-direction: row;
+      justify-content: flex-end;
+      margin: 20px;
     }
     .badge-body {
       width: 95%;
-      padding: 2 2 2 20px;
+      margin: 2px 0 2px 0;
       background-color: #fff;
       border-radius: 5px;
       display: flex;
       flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
-    .name {
-      font-size: 16px;
-      font-weight: bold;
-      color: #fff;
-    }
-    .creator {
-      font-size: 12px;
-      color: #fff;
+      align-items: flex-start;
     }
     .category {
       font-size: 12px;
-      color: #fff;
+      color: #4c4c4c;
+      padding: 10px 20px;
+      background-color: #00d9ff50;
+      width: 100%;
+    }
+    .name {
+      font-size: 24px;
+      text-decoration: none;
+      font-weight: bold;
+      color: #000000;
+      padding: 10px 20px;
+    }
+    .creator {
+      font-size: 12px;
+      color: #414141;
+      padding: 10px 20px;
     }
   `;
 

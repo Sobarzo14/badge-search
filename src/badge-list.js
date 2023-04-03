@@ -40,6 +40,7 @@ class BadgeList extends LitElement {
 
   async searchBadges() {
     const address = new URL('../assets/badges.json', import.meta.url).href;
+    console.log(address);
     fetch(address)
       .then(response => {
         if (response.ok) {
@@ -49,6 +50,7 @@ class BadgeList extends LitElement {
       })
       .then(data => {
         this.badges = data;
+        console.log(this.badges);
       });
   }
 
@@ -56,8 +58,15 @@ class BadgeList extends LitElement {
     return html`
       <div class="container">
         <div class="dialogue">${this.dialogue}</div>
-        <div class="card-list">
-          <badge-element></badge-element>
+        <div class="badge-list">
+          ${this.badges.map(
+            badge =>
+              html` <badge-card
+                name="${badge.name}"
+                category="${badge.category}"
+                creator="${badge.creator}"
+              ></badge-card>`
+          )}
         </div>
       </div>
     `;
