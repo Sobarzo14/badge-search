@@ -52,6 +52,20 @@ class BadgeList extends LitElement {
       });
   }
 
+  async updateRoster() {
+    const address = new URL('../assets/roster.json', import.meta.url).href;
+    fetch(address)
+      .then(response => {
+        if (response.ok) {
+          return response.json();
+        }
+        return [];
+      })
+      .then(data => {
+        this.badges = data;
+      });
+  }
+
   render() {
     return html`
       <div class="container">
