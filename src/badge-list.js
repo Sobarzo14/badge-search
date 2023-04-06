@@ -4,6 +4,7 @@ class BadgeList extends LitElement {
   static properties = {
     name: { type: String },
     dialogue: { type: String },
+    badges: { type: Array },
   };
 
   static styles = css`
@@ -32,6 +33,8 @@ class BadgeList extends LitElement {
   constructor() {
     super();
     this.name = 'My name';
+    this.creator = 'My creator';
+    this.category = 'My category';
     this.dialogue =
       "Looking for something brand spankin' new? Here are the most recently added badges!";
     this.searchBadges();
@@ -48,7 +51,7 @@ class BadgeList extends LitElement {
         return [];
       })
       .then(data => {
-        this.badges = data;
+        this.badges = data.badges;
       });
   }
 
@@ -70,8 +73,15 @@ class BadgeList extends LitElement {
     return html`
       <div class="container">
         <div class="dialogue">${this.dialogue}</div>
-        <div class="card-list">
-          <badge-element></badge-element>
+        <div class="badge-list">
+          ${this.badges.map(
+            badge =>
+              html` <badge-card
+                name=${badge.name}
+                category=${badge.category}
+                creator=${badge.creator}
+              ></badge-card>`
+          )}
         </div>
       </div>
     `;
