@@ -1,22 +1,28 @@
 export default async function handler(request, res) {
   const roster = [
     {
-      badge: 'https://www.roblox.com/asset/?id=123456789',
-      name: 'Badge Name',
-      description: 'Badge Description',
-      id: 123456789,
+      name: 'https://www.roblox.com/asset/?id=123456789',
+      creator: 'Badge Name',
+      category: 'Badge Description',
+      icon: 'av:queue-music',
     },
     {
-      badge: 'https://www.roblox.com/asset/?id=987654321',
-      name: 'Badge Name',
-      description: 'Badge Description',
-      id: 987654321,
+      name: 'https://www.roblox.com/asset/?id=123456789',
+      creator: 'Badge Name',
+      category: 'Badge Description',
+      icon: 'av:queue-music',
     },
     {
-      badge: 'https://www.roblox.com/asset/?id=123987456',
-      name: 'Badge Name',
-      description: 'Badge Description',
-      id: 123987456,
+      name: 'https://www.roblox.com/asset/?id=123456789',
+      creator: 'Badge Name',
+      category: 'Badge Description',
+      icon: 'av:queue-music',
+    },
+    {
+      name: 'https://www.roblox.com/asset/?id=123456789',
+      creator: 'Badge Name',
+      category: 'Badge Description',
+      icon: 'av:queue-music',
     },
   ];
   res.setHeader('Cache-Control', 'max-age=0, s-maxage=1800');

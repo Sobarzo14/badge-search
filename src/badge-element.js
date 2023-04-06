@@ -10,29 +10,10 @@ class BadgeElement extends LitElement {
   };
 
   static styles = css`
-    a:active {
-      text-decoration: none;
-      color: #000000;
-    }
-    a:hover {
-      text-decoration: none;
-      color: #000000;
-    }
-    a:visited {
-      text-decoration: none;
-      color: #000000;
-    }
-    .card {
-      text-decoration: none;
-      background-color: #8a8a8a;
-      border: 1px solid #ccc;
-      color: #000000;
-    }
     .container {
-      width: 280px;
+      width: 25%;
       padding: 2 2 2 20;
       font-size: 12px;
-      background-color: #00d9ff;
       display: flex;
       flex-direction: row;
       justify-content: flex-end;
@@ -51,7 +32,6 @@ class BadgeElement extends LitElement {
       font-size: 12px;
       color: #4c4c4c;
       padding: 10px 20px;
-      background-color: #00d9ff50;
       width: 100%;
     }
     .name {
@@ -77,18 +57,17 @@ class BadgeElement extends LitElement {
 
   render() {
     return html`
-      <a href="#" class="card">
-        <div class="container">
-          <div class="badge-body">
-            <div class="category">${this.category}</div>
-            <div class="info">
-              <span>${this.name}</span>
-              <i></i>
-            </div>
-            <div class="creator">${this.creator}</div>
+      <div class="container">
+        <div class="badge-body">
+          <div class="category">${this.category}</div>
+          <div class="info">
+            <span>${this.name}</span>
+            <i></i>
           </div>
+          <div class="creator">${this.creator}</div>
         </div>
-      </a>
+        <div class="icon"></div>
+      </div>
     `;
   }
 }

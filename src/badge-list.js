@@ -4,6 +4,7 @@ class BadgeList extends LitElement {
   static properties = {
     name: { type: String },
     dialogue: { type: String },
+    badges: { type: Array },
   };
 
   static styles = css`
@@ -32,6 +33,8 @@ class BadgeList extends LitElement {
   constructor() {
     super();
     this.name = 'My name';
+    this.creator = 'My creator';
+    this.category = 'My category';
     this.dialogue =
       "Looking for something brand spankin' new? Here are the most recently added badges!";
     this.searchBadges();
@@ -40,7 +43,6 @@ class BadgeList extends LitElement {
 
   async searchBadges() {
     const address = new URL('../assets/badges.json', import.meta.url).href;
-    console.log(address);
     fetch(address)
       .then(response => {
         if (response.ok) {
@@ -49,8 +51,7 @@ class BadgeList extends LitElement {
         return [];
       })
       .then(data => {
-        this.badges = data;
-        console.log(this.badges);
+        this.badges = data.badges;
       });
   }
 
@@ -62,9 +63,9 @@ class BadgeList extends LitElement {
           ${this.badges.map(
             badge =>
               html` <badge-card
-                name="${badge.name}"
-                category="${badge.category}"
-                creator="${badge.creator}"
+                name=${badge.name}
+                category=${badge.category}
+                creator=${badge.creator}
               ></badge-card>`
           )}
         </div>
