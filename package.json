@@ -17,6 +17,7 @@
     "start": "web-dev-server"
   },
   "dependencies": {
+    "@lrnwebcomponents/simple-icon": "^4.2.0",
     "lit": "^2.0.2"
   },
   "devDependencies": {
@@ -42,31 +43,13 @@
     "rimraf": "^3.0.2",
     "rollup": "^2.60.0",
     "rollup-plugin-esbuild": "^5.0.0",
-    "rollup-plugin-workbox": "^6.2.0"
-  },
-  "eslintConfig": {
-    "parserOptions": {
-      "ecmaVersion": "latest"
-    },
-    "extends": [
-      "@open-wc",
-      "prettier"
-    ]
+    "rollup-plugin-workbox": "^6.2.0",
+    "rollup-plugin-workbox": "^6.2.0",
+    "rollup-plugin-copy": "3.4.0"
   },
   "prettier": {
     "singleQuote": true,
     "arrowParens": "avoid"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "*.js": [
-      "eslint --fix",
-      "prettier --write"
-    ]
   },
   "customElements": "custom-elements.json"
 }

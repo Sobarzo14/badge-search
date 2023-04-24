@@ -1,4 +1,6 @@
 import { LitElement, html, css } from 'lit';
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 
 class BadgeElement extends LitElement {
   static properties = {
@@ -10,41 +12,44 @@ class BadgeElement extends LitElement {
   };
 
   static styles = css`
-    .container {
-      width: 25%;
-      padding: 2 2 2 20;
-      font-size: 12px;
+    .badge {
       display: flex;
-      flex-direction: row;
-      justify-content: flex-end;
-      margin: 20px;
-    }
-    .badge-body {
-      width: 95%;
-      margin: 2px 0 2px 0;
-      background-color: #fff;
+      align-items: center;
+      padding: 10px;
       border-radius: 5px;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
+      background-color: #f2f2f2;
+      width: 400px;
+      height: 150px;
     }
+
     .category {
       font-size: 12px;
-      color: #4c4c4c;
-      padding: 10px 20px;
-      width: 100%;
-    }
-    .name {
-      font-size: 24px;
-      text-decoration: none;
       font-weight: bold;
-      color: #000000;
-      padding: 10px 20px;
+      text-transform: uppercase;
+      color: #999;
+      padding: 3px 6px;
+      border-radius: 3px;
+      margin-right: 10px;
+      background-color: #ddd;
     }
+
+    .icon {
+      width: 50px;
+    }
+
+    .content {
+      flex: 1;
+    }
+
+    .title {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
     .creator {
-      font-size: 12px;
-      color: #414141;
-      padding: 10px 20px;
+      font-size: 14px;
+      color: #999;
     }
   `;
 
@@ -57,16 +62,15 @@ class BadgeElement extends LitElement {
 
   render() {
     return html`
-      <div class="container">
-        <div class="badge-body">
-          <div class="category">${this.category}</div>
-          <div class="info">
-            <span>${this.name}</span>
-            <i></i>
-          </div>
-          <div class="creator">${this.creator}</div>
+      <div class="badge">
+        <div class="category">Category</div>
+        <div class="icon">
+        <simple-icon class="icon" accent-color="blue-grey" icon="image:portrait"></simple-icon>
         </div>
-        <div class="icon"></div>
+        <div class="content">
+          <div class="title">Title</div>
+          <div class="creator">Creator</div>
+        </div>
       </div>
     `;
   }
