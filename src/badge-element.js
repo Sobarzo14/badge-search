@@ -55,21 +55,21 @@ class BadgeElement extends LitElement {
 
   constructor() {
     super();
-    this.name = 'APA Styles Citation: Introduction';
-    this.creator = 'Victoria Rash';
-    this.category = 'My category';
+    this.name = '';
+    this.creator = '';
+    this.category = '';
   }
 
   render() {
     return html`
       <div class="badge">
-        <div class="category">Category</div>
+        <div class="category">${this.category}</div>
         <div class="icon">
-        <simple-icon class="icon" accent-color="blue-grey" icon="image:portrait"></simple-icon>
+        <simple-icon class="icon" accent-color="blue-grey" icon="${this.icon}"></simple-icon>
         </div>
         <div class="content">
-          <div class="title">Title</div>
-          <div class="creator">Creator</div>
+          <div class="title">${this.name}</div>
+          <div class="creator">${this.creator}</div>
         </div>
       </div>
     `;

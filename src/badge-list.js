@@ -18,19 +18,19 @@ class BadgeList extends LitElement {
     this.dialogue = "";
     this.badges = [];
     this.searchBadges();
+    console.log(this.badges)
   }
 
   async searchBadges() {
-    const address = new URL('../api/badges', import.meta.url).href;
-    const data = fetch(address).then((response) => {
+    const address = new URL('../api/badges.json', import.meta.url).href;
+    fetch(address).then((response) => {
       if (response.ok) {
         return response.json();
       }
       return [];
     }).then((data) => { 
-      this.badges = data;
+      this.badges = data.badges;
     });
-    console.log(data);
   }
 
   static get styles() {
@@ -75,7 +75,7 @@ class BadgeList extends LitElement {
             badge =>
               html` 
               <div class="item">
-                <badge-element name=${badge.name} category=${badge.category} creator=${badge.creator}></badge-element>
+                <badge-element name=${badge.name} category=${badge.category} creator=${badge.creator} icon=${badge.icon}></badge-element>
               </div>`
           )}
         </div>
