@@ -17,12 +17,11 @@ class BadgeList extends LitElement {
     this.category = '';
     this.dialogue = "";
     this.badges = [];
-    this.searchBadges();
-    console.log(this.badges)
+    this.searchBadges(); 
   }
 
   async searchBadges() {
-    const address = new URL('../api/badges.json', import.meta.url).href;
+    const address = new URL('../api/badges.js', import.meta.url).href;
     fetch(address).then((response) => {
       if (response.ok) {
         return response.json();
