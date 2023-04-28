@@ -1,6 +1,5 @@
 export default async function handler(request, res) {
 
-  const search = req.query.search || '';
   const badges = [
     {
       "name": "Stage Crew stamp",
@@ -100,13 +99,6 @@ export default async function handler(request, res) {
     }
   ];
 
-  badges.map((badge) => {
-    badge.index = badge.name.toLowerCase() + " " + badge.position.toLowerCase() + " " + badge.top.toLowerCase();
-  });
-  badges = badges.filter((badge) => {
-    return badge.index.indexOf(search.toLowerCase()) > -1;
-  });
-
   res.setHeader('Cache-Control', 'max-age=0, s-maxage=1800');
   res.setHeader('Access-Control-Allow-Credentials', 'true');
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -118,5 +110,5 @@ export default async function handler(request, res) {
     'Access-Control-Allow-Headers',
     'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
   );
-  res.json(roster);
+  res.json(badges);
 }
