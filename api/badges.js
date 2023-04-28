@@ -1,6 +1,6 @@
-export default async function handler(request, res) {
-
-  const badges = [
+export default async function handler(req, res) {
+  const search = req.query.search || '';
+  var badges = [
     {
       "name": "Stage Crew stamp",
       "creator": "Aunt Arctic",
@@ -98,17 +98,29 @@ export default async function handler(request, res) {
       "icon": "hardware:security"
     }
   ];
+  badges.map((badge) => {
+    badge.index = badge.name.toLowerCase() + " " + badge.creator.toLowerCase() + " " + badge.category.toLowerCase();
+  });
+
+  badges = badges.filter((badge) => {
+    console.log(badge.index.indexOf(search.toLowerCase()) > -1);
+    if (badge.index.indexOf(search.toLowerCase() > -1))
+      return true;
+    else
+      return false;
+  });
+  console.log(badges.filter((badge) => {
+    badge.index = badge.name.toLowerCase() + " " + badge.creator.toLowerCase() + " " + badge.category.toLowerCase();
+    if (badge.index.indexOf(search.toLowerCase() > -1))
+      return true;
+    else
+      return false;
+  }));
 
   res.setHeader('Cache-Control', 'max-age=0, s-maxage=1800');
-  res.setHeader('Access-Control-Allow-Credentials', 'true');
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader(
-    'Access-Control-Allow-Methods',
-    'GET,OPTIONS,PATCH,DELETE,POST,PUT'
-  );
-  res.setHeader(
-    'Access-Control-Allow-Headers',
-    'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
-  );
+  res.setHeader("Access-Control-Allow-Credentials", "true");
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Methods", "GET,OPTIONS,PATCH,DELETE,POST,PUT");
+  res.setHeader("Access-Control-Allow-Headers", "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version");
   res.json(badges);
 }

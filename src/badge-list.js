@@ -1,5 +1,6 @@
 import { LitElement, html, css } from 'lit';
 import './badge-element.js';
+import './search-bar.js';
 
 class BadgeList extends LitElement {
   static get properties() {
@@ -15,26 +16,42 @@ class BadgeList extends LitElement {
     this.name = '';
     this.creator = '';
     this.category = '';
-    this.dialogue = "";
+    this.dialogue = '';
     this.badges = [];
-    this.searchBadges(); 
+    this.getSearchResults().then((results) => {
+      this.players = results;
+    });
   }
 
-  async searchBadges() {
-    const address = new URL('../assets/badges.json', import.meta.url).href;
-    console.log(address);
-    fetch(address).then((response) => {
+  async getSearchResults(value = '') {
+    const address = '/api/badges?search=' + value;
+    const results = await fetch(address).then((response) => {
       if (response.ok) {
-        return response.json();
+        return response.json()
       }
       return [];
-    }).then((data) => { 
-      this.badges = data.badges;
+    }).then((data) => {
+        return data;
     });
+    return results;
+  }
+
+  async _handleSearchEvent(e) {
+    const term = e.detail.value;
+    this.badges = await this.getSearchResults(term);
   }
 
   static get styles() {
     return css`
+      .box {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+      search-bar{
+        display: block;
+      }
       .container {
         width: 90%;
         background-color: #fff;
@@ -68,16 +85,19 @@ class BadgeList extends LitElement {
 
   render() {
     return html`
-      <div class="container">
-        <div class="dialogue">${this.dialogue}</div>
-        <div class="badge-list">
-          ${this.badges.map(
-            badge =>
-              html` 
-              <div class="item">
-                <badge-element name=${badge.name} category=${badge.category} creator=${badge.creator} icon=${badge.icon}></badge-element>
-              </div>`
-          )}
+      <div class="box">
+        <search-bar @value-changed="${this._handleSearchEvent}"></search-bar>
+        <div class="container">
+          <div class="dialogue">${this.dialogue}</div>
+          <div class="badge-list">
+            ${this.badges.map(
+              badge =>
+                html` 
+                <div class="item">
+                  <badge-element name=${badge.name} category=${badge.category} creator=${badge.creator} icon=${badge.icon}></badge-element>
+                </div>`
+            )}
+          </div>
         </div>
       </div>
     `;
