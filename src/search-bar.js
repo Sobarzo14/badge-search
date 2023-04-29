@@ -21,6 +21,7 @@ class SearchBar extends LitElement {
       padding: 10px;
       margin: 10px;
       width: 90%;
+      box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
     }
     .dialogue {
       text-align: center;
@@ -79,7 +80,7 @@ class SearchBar extends LitElement {
         <div class="search">
           <simple-icon icon="search"></simple-icon>
           <input type="text" placeholder="Search" class="search-bar" @input="${this._handleInput}" value=${this.value} />
-          <button class="search-button">Search</button>
+          <button class="search-button" @click="${this._handleInput}">Search</button>
         </div>
       </div>
     `;

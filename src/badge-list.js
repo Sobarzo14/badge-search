@@ -49,9 +49,11 @@ class BadgeList extends LitElement {
         align-items: center;
         justify-content: center;
       }
-      search-bar{
-        display: block;
+      search-bar {
+        margin: 10px;
+        align-self: center;
       }
+    
       .container {
         width: 90%;
         background-color: #fff;
@@ -85,19 +87,17 @@ class BadgeList extends LitElement {
 
   render() {
     return html`
-      <div class="box">
+      <div class="container">
         <search-bar @value-changed="${this._handleSearchEvent}"></search-bar>
-        <div class="container">
-          <div class="dialogue">${this.dialogue}</div>
-          <div class="badge-list">
-            ${this.badges.map(
-              badge =>
-                html` 
-                <div class="item">
-                  <badge-element name=${badge.name} category=${badge.category} creator=${badge.creator} icon=${badge.icon}></badge-element>
-                </div>`
-            )}
-          </div>
+        <div class="dialogue">${this.dialogue}</div>
+        <div class="badge-list">
+          ${this.badges.map(
+            badge =>
+              html` 
+              <div class="item">
+                <badge-element name=${badge.name} category=${badge.category} creator=${badge.creator} icon=${badge.icon}></badge-element>
+              </div>`
+          )}
         </div>
       </div>
     `;
