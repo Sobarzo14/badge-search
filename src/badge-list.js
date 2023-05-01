@@ -16,7 +16,7 @@ class BadgeList extends LitElement {
     this.name = '';
     this.creator = '';
     this.category = '';
-    this.dialogue = '';
+    this.dialogue = 'Looking for something brand spankin new? Search for badges here!';
     this.badges = [];
     this.getSearchResults().then((results) => {
       this.players = results;
@@ -87,8 +87,8 @@ class BadgeList extends LitElement {
 
   render() {
     return html`
+    <search-bar @value-changed="${this._handleSearchEvent}"></search-bar>
       <div class="container">
-        <search-bar @value-changed="${this._handleSearchEvent}"></search-bar>
         <div class="dialogue">${this.dialogue}</div>
         <div class="badge-list">
           ${this.badges.map(
